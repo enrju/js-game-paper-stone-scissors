@@ -56,12 +56,59 @@ function getCompChoice(possibleChoices){
     return possibleChoices[index];
 }
 
+function getGameResult(player, comp, possibleChoices){
+    const possibleResults = ["win", "loss", "draw"];
+    switch(player){
+        case possibleChoices[0]:
+            switch(comp){
+                case possibleChoices[0]:
+                    return possibleResults[2];
+                    break;
+                case possibleChoices[1]:
+                    return possibleResults[0];
+                    break;
+                case possibleChoices[2]:
+                    return possibleResults[1];
+                    break;
+            }
+            break;
+        case possibleChoices[1]:
+            switch(comp){
+                case possibleChoices[0]:
+                    return possibleResults[1];
+                    break;
+                case possibleChoices[1]:
+                    return possibleResults[2];
+                    break;
+                case possibleChoices[2]:
+                    return possibleResults[0];
+                    break;
+            }
+            break;
+        case possibleChoices[2]:
+            switch(comp){
+                case possibleChoices[0]:
+                    return possibleResults[0];
+                    break;
+                case possibleChoices[1]:
+                    return possibleResults[1];
+                    break;
+                case possibleChoices[2]:
+                    return possibleResults[2];
+                    break;
+            }
+            break;
+    }
+}
+
 function main(){
     let page = getPage();
     let isPictureChoose = false;
     let playerChoice = null;
     let compChoice = null;
+    let gameResult = null;
     const possibleChoices = ["paper", "stone", "scissors"];
+    
 
     page.pictures.forEach((item)=>{
         item.addEventListener("click", ()=>{
@@ -74,9 +121,10 @@ function main(){
 
     page.btnPlay.addEventListener("click", ()=>{
         if(isPictureChoose){
-            console.log('działamy');
+            // console.log('działamy');
             compChoice = getCompChoice(possibleChoices);
-            // console.log(playerChoice, compChoice);
+            gameResult = getGameResult(playerChoice,compChoice, possibleChoices);
+            // console.log(playerChoice, compChoice, gameResult);
         }
         else {
             console.log('nie wybrano obrazka');
