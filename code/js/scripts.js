@@ -22,6 +22,17 @@ function getPage(){
     }
 }
 
+function updateActivePicture(page, picture){
+    //clear class active
+    for(let i = 0; i < page.pictures.length; i++){
+        page.pictures[i].classList.remove("active");
+    }
+    //check which clicked
+    picture.classList.add("active");
+
+    return true;
+}
+
 function main(){
     let page = getPage();
     let isPictureChoose = false;
@@ -29,13 +40,8 @@ function main(){
 
     page.pictures.forEach((item)=>{
         item.addEventListener("click", ()=>{
-            //clear class active
-            for(let i = 0; i < page.pictures.length; i++){
-                page.pictures[i].classList.remove("active");
-            }
-            //check which clicked
-            item.classList.add("active");
-            isPictureChoose = true;
+            isPictureChoose = updateActivePicture(page, item);
+            
             if(item.classList.contains("paper")){
                 playerChoice = "paper";
             }
