@@ -17,6 +17,10 @@ body {
                     width: 100%;
                 }
             }
+
+            div.pic.active img {
+                border: 3px solid red;
+            }
         }
     }
 }
