@@ -33,6 +33,18 @@ function updateActivePicture(page, picture){
     return true;
 }
 
+function getPlayerChoice(picture){
+    if(picture.classList.contains("paper")){
+        return "paper";
+    }
+    else if(picture.classList.contains("stone")){
+        return "stone";
+    }
+    else if(picture.classList.contains("scissors")){
+        return "scissors";
+    }
+}
+
 function main(){
     let page = getPage();
     let isPictureChoose = false;
@@ -41,17 +53,9 @@ function main(){
     page.pictures.forEach((item)=>{
         item.addEventListener("click", ()=>{
             isPictureChoose = updateActivePicture(page, item);
+            playerChoice = getPlayerChoice(item);
             
-            if(item.classList.contains("paper")){
-                playerChoice = "paper";
-            }
-            else if(item.classList.contains("stone")){
-                playerChoice = "stone";
-            }
-            else if(item.classList.contains("scissors")){
-                playerChoice = "scissors";
-            }
-            console.log(isPictureChoose, playerChoice);
+            // console.log(isPictureChoose, playerChoice);
         });
     });
 
