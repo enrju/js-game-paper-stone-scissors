@@ -24,7 +24,16 @@ function getPage(){
 
 function main(){
     let page = getPage();
-    console.log(page);
+    page.pictures.forEach((item)=>{
+        item.addEventListener("click", ()=>{
+            //clear class active
+            for(let i = 0; i < page.pictures.length; i++){
+                page.pictures[i].classList.remove("active");
+            }
+            //check which clicked
+            item.classList.add("active");
+        });
+    });
 }
 
 main();
