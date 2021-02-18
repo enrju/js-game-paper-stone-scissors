@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    text-align: center;
+
+    section {
+        div.pictures {
+            div.pic {
+                display: inline-block;
+                width: 30%;
+
+                img {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
