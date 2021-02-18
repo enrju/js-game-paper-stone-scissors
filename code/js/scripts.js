@@ -22,6 +22,29 @@ function getPage(){
     }
 }
 
+function updateActivePicture(page, picture){
+    //clear class active
+    for(let i = 0; i < page.pictures.length; i++){
+        page.pictures[i].classList.remove("active");
+    }
+    //check which clicked
+    picture.classList.add("active");
+
+    return true;
+}
+
+function getPlayerChoice(picture){
+    if(picture.classList.contains("paper")){
+        return "paper";
+    }
+    else if(picture.classList.contains("stone")){
+        return "stone";
+    }
+    else if(picture.classList.contains("scissors")){
+        return "scissors";
+    }
+}
+
 function main(){
     let page = getPage();
     let isPictureChoose = false;
@@ -29,23 +52,10 @@ function main(){
 
     page.pictures.forEach((item)=>{
         item.addEventListener("click", ()=>{
-            //clear class active
-            for(let i = 0; i < page.pictures.length; i++){
-                page.pictures[i].classList.remove("active");
-            }
-            //check which clicked
-            item.classList.add("active");
-            isPictureChoose = true;
-            if(item.classList.contains("paper")){
-                playerChoice = "paper";
-            }
-            else if(item.classList.contains("stone")){
-                playerChoice = "stone";
-            }
-            else if(item.classList.contains("scissors")){
-                playerChoice = "scissors";
-            }
-            console.log(isPictureChoose, playerChoice);
+            isPictureChoose = updateActivePicture(page, item);
+            playerChoice = getPlayerChoice(item);
+            
+            // console.log(isPictureChoose, playerChoice);
         });
     });
 
