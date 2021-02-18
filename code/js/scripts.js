@@ -101,6 +101,38 @@ function getGameResult(player, comp, possibleChoices){
     }
 }
 
+function addResultToStats(result, stats){
+    stats.push(result);
+    return stats;
+}
+
+function getStats(stats){
+    let tmp = [];
+    let nGames = stats.length;
+    
+    tmp = stats.filter((item)=>{
+        return item === "win";
+    })
+    let nWins = tmp.length;
+
+    tmp = stats.filter((item)=>{
+        return item === "loss";
+    })
+    let nLosses = tmp.length;
+
+    tmp = stats.filter((item)=>{
+        return item === "draw";
+    })
+    let nDraws = tmp.length;
+
+    return {
+        nGames,
+        nWins,
+        nLosses,
+        nDraws
+    }
+}
+
 function main(){
     let page = getPage();
     let isPictureChoose = false;
@@ -108,7 +140,7 @@ function main(){
     let compChoice = null;
     let gameResult = null;
     const possibleChoices = ["paper", "stone", "scissors"];
-    
+    let stats = [];
 
     page.pictures.forEach((item)=>{
         item.addEventListener("click", ()=>{
@@ -125,6 +157,9 @@ function main(){
             compChoice = getCompChoice(possibleChoices);
             gameResult = getGameResult(playerChoice,compChoice, possibleChoices);
             // console.log(playerChoice, compChoice, gameResult);
+            stats = addResultToStats(gameResult, stats);
+            let statSummary = getStats(stats);
+            console.log(stats, statSummary);
         }
         else {
             // console.log('nie wybrano obrazka');
