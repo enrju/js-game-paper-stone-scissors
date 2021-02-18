@@ -33,34 +33,42 @@ function updateActivePicture(page, picture){
     return true;
 }
 
-function getPlayerChoice(picture){
-    if(picture.classList.contains("paper")){
-        return "paper";
+function getPlayerChoice(picture, possibleChoices){
+    let result = null;
+    
+    for(let i = 0; i < possibleChoices.length; i++){
+        if(picture.classList.contains(possibleChoices[i])){
+            result = possibleChoices[i];
+            break;
+        }
     }
-    else if(picture.classList.contains("stone")){
-        return "stone";
-    }
-    else if(picture.classList.contains("scissors")){
-        return "scissors";
-    }
+
+    return result;
 }
 
 function main(){
     let page = getPage();
     let isPictureChoose = false;
     let playerChoice = null;
+    let compChoice = null;
+    const possibleChoices = ["paper", "stone", "scissors"];
 
     page.pictures.forEach((item)=>{
         item.addEventListener("click", ()=>{
             isPictureChoose = updateActivePicture(page, item);
-            playerChoice = getPlayerChoice(item);
+            playerChoice = getPlayerChoice(item, possibleChoices);
             
-            // console.log(isPictureChoose, playerChoice);
+            console.log(isPictureChoose, playerChoice);
         });
     });
 
     page.btnPlay.addEventListener("click", ()=>{
-
+        if(isPictureChoose){
+            console.log('działamy');
+        }
+        else {
+            console.log('nie wybrano obrazka');
+        }
     });
 }
 
