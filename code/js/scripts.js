@@ -24,6 +24,9 @@ function getPage(){
 
 function main(){
     let page = getPage();
+    let isPictureChoose = false;
+    let playerChoice = null;
+
     page.pictures.forEach((item)=>{
         item.addEventListener("click", ()=>{
             //clear class active
@@ -32,7 +35,22 @@ function main(){
             }
             //check which clicked
             item.classList.add("active");
+            isPictureChoose = true;
+            if(item.classList.contains("paper")){
+                playerChoice = "paper";
+            }
+            else if(item.classList.contains("stone")){
+                playerChoice = "stone";
+            }
+            else if(item.classList.contains("scissors")){
+                playerChoice = "scissors";
+            }
+            console.log(isPictureChoose, playerChoice);
         });
+    });
+
+    page.btnPlay.addEventListener("click", ()=>{
+
     });
 }
 
