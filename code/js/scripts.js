@@ -133,6 +133,19 @@ function getStats(stats){
     }
 }
 
+function updatePage(page, playerChoice, compChoice, gameResult, statSummary){
+    page.pictures.forEach((item)=>{
+        item.classList.remove("active");
+    });
+    page.spanPlayerChoice.textContent = playerChoice;
+    page.spanCompChoice.textContent = compChoice;
+    page.spanGameResult.textContent = gameResult;
+    page.spanNGames.textContent = statSummary.nGames;
+    page.spanNWins.textContent = statSummary.nWins;
+    page.spanNLosses.textContent = statSummary.nLosses;
+    page.spanNDraws.textContent = statSummary.nDraws;
+}
+
 function main(){
     let page = getPage();
     let isPictureChoose = false;
@@ -159,7 +172,12 @@ function main(){
             // console.log(playerChoice, compChoice, gameResult);
             stats = addResultToStats(gameResult, stats);
             let statSummary = getStats(stats);
-            console.log(stats, statSummary);
+            // console.log(stats, statSummary);
+            updatePage(page, playerChoice, compChoice, gameResult, statSummary);
+            isPictureChoose = false;
+            playerChoice = null;
+            compChoice = null;
+            gameResult = null;
         }
         else {
             // console.log('nie wybrano obrazka');
