@@ -6,8 +6,27 @@
 
 body {
     text-align: center;
+    font-family: arial;
 
     section {
+        padding: 10px;
+        background-color: royalblue;
+        margin: 10px;
+
+        h1 {
+            margin: 10px 0;
+            font-size: 32px;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        h3:nth-of-type(2) {
+            margin-top: 30px;
+            font-size: 24px;
+        }
+
         div.pictures {
             div.pic {
                 display: inline-block;
@@ -18,9 +37,30 @@ body {
                 }
             }
 
+            div.pic:hover {
+                cursor: pointer;
+            }
+
             div.pic.active img {
                 border: 3px solid red;
             }
+        }
+
+        button {
+            padding: 10px 30px;
+            margin: 20px 0 10px;
+            background-color: transparent;
+            border: 3px solid white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        button:hover {
+            cursor: pointer;
+        }
+
+        p span {
+            font-weight: bold;
         }
     }
 }

@@ -7,6 +7,27 @@
 
 body {
   text-align: center;
+  font-family: arial;
+}
+
+body section {
+  padding: 10px;
+  background-color: royalblue;
+  margin: 10px;
+}
+
+body section h1 {
+  margin: 10px 0;
+  font-size: 32px;
+}
+
+body section h2 {
+  margin-bottom: 10px;
+}
+
+body section h3:nth-of-type(2) {
+  margin-top: 30px;
+  font-size: 24px;
 }
 
 body section div.pictures div.pic {
@@ -18,7 +39,28 @@ body section div.pictures div.pic img {
   width: 100%;
 }
 
+body section div.pictures div.pic:hover {
+  cursor: pointer;
+}
+
 body section div.pictures div.pic.active img {
   border: 3px solid red;
+}
+
+body section button {
+  padding: 10px 30px;
+  margin: 20px 0 10px;
+  background-color: transparent;
+  border: 3px solid white;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+body section button:hover {
+  cursor: pointer;
+}
+
+body section p span {
+  font-weight: bold;
 }
 /*# sourceMappingURL=styles.css.map */
