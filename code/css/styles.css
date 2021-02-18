@@ -17,4 +17,8 @@ body section div.pictures div.pic {
 body section div.pictures div.pic img {
   width: 100%;
 }
+
+body section div.pictures div.pic.active img {
+  border: 3px solid red;
+}
 /*# sourceMappingURL=styles.css.map */
