@@ -159,20 +159,15 @@ function main(){
         item.addEventListener("click", ()=>{
             isPictureChoose = updateActivePicture(page, item);
             playerChoice = getPlayerChoice(item, possibleChoices);
-            
-            // console.log(isPictureChoose, playerChoice);
         });
     });
 
     page.btnPlay.addEventListener("click", ()=>{
         if(isPictureChoose){
-            // console.log('działamy');
             compChoice = getCompChoice(possibleChoices);
             gameResult = getGameResult(playerChoice,compChoice, possibleChoices);
-            // console.log(playerChoice, compChoice, gameResult);
             stats = addResultToStats(gameResult, stats);
             let statSummary = getStats(stats);
-            // console.log(stats, statSummary);
             updatePage(page, playerChoice, compChoice, gameResult, statSummary);
             isPictureChoose = false;
             playerChoice = null;
@@ -180,7 +175,6 @@ function main(){
             gameResult = null;
         }
         else {
-            // console.log('nie wybrano obrazka');
             alert("You did not choose picture! Choose picture, please.");
         }
     });
