@@ -127,7 +127,8 @@ function main(){
             // console.log(playerChoice, compChoice, gameResult);
         }
         else {
-            console.log('nie wybrano obrazka');
+            // console.log('nie wybrano obrazka');
+            alert("You did not choose picture! Choose picture, please.");
         }
     });
 }
