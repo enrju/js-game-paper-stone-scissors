@@ -35,7 +35,7 @@ function updateActivePicture(page, picture){
 
 function getPlayerChoice(picture, possibleChoices){
     let result = null;
-    
+
     for(let i = 0; i < possibleChoices.length; i++){
         if(picture.classList.contains(possibleChoices[i])){
             result = possibleChoices[i];
@@ -44,6 +44,16 @@ function getPlayerChoice(picture, possibleChoices){
     }
 
     return result;
+}
+
+function numberRandomFrom(min, max) {
+    const number = Math.random() * (max - min + 1);
+    return Math.floor(number);
+}
+
+function getCompChoice(possibleChoices){
+    let index = numberRandomFrom(0, possibleChoices.length-1);
+    return possibleChoices[index];
 }
 
 function main(){
@@ -58,13 +68,15 @@ function main(){
             isPictureChoose = updateActivePicture(page, item);
             playerChoice = getPlayerChoice(item, possibleChoices);
             
-            console.log(isPictureChoose, playerChoice);
+            // console.log(isPictureChoose, playerChoice);
         });
     });
 
     page.btnPlay.addEventListener("click", ()=>{
         if(isPictureChoose){
             console.log('działamy');
+            compChoice = getCompChoice(possibleChoices);
+            // console.log(playerChoice, compChoice);
         }
         else {
             console.log('nie wybrano obrazka');
