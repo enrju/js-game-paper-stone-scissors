@@ -1,3 +1,6 @@
+// What is does: get elements from HTML
+//        input: none
+//       output: structure of elements from HTML  
 function getPage(){
     const pictures = document.querySelectorAll("section .pictures .pic");
     const btnPlay = document.querySelector("section button");
@@ -22,6 +25,11 @@ function getPage(){
     }
 }
 
+// What is does: update clicked HTML element, switched actual clicked
+//        input: page - structure of all elements from HTML
+//                      need all pictures for deactivate previously selected picture
+//               picture - clicked picture       
+//       output: true/false
 function updateActivePicture(page, picture){
     //clear class active
     for(let i = 0; i < page.pictures.length; i++){
@@ -33,6 +41,10 @@ function updateActivePicture(page, picture){
     return true;
 }
 
+// What is does: replace player choice into text
+//        input: picture - clicked picture
+//               possibleChioces - text equivalents of picture    
+//       output: text equivalents of choosed picture
 function getPlayerChoice(picture, possibleChoices){
     let result = null;
 
@@ -46,16 +58,28 @@ function getPlayerChoice(picture, possibleChoices){
     return result;
 }
 
+// What is does: calc random number from a given range
+//        input: min - min number
+//               max - max number    
+//       output: random number from min to max (together with max)
 function numberRandomFrom(min, max) {
     const number = Math.random() * (max - min + 1);
     return Math.floor(number);
 }
 
+// What is does: calc random computer choice
+//        input: possibleChioces - text equivalents of picture    
+//       output: text equivalents of choosed picture
 function getCompChoice(possibleChoices){
     let index = numberRandomFrom(0, possibleChoices.length-1);
     return possibleChoices[index];
 }
 
+// What is does: check result of game
+//        input: player - player choice
+//               comp - computer choice
+//               possibleChioces - text equivalents of picture  
+//       output: text equivalents of result of game
 function getGameResult(player, comp, possibleChoices){
     const possibleResults = ["win", "loss", "draw"];
     switch(player){
@@ -101,11 +125,18 @@ function getGameResult(player, comp, possibleChoices){
     }
 }
 
+// What is does: add last result of game into statistics
+//        input: result - result of game
+//               stats - table with result of game
+//       output: stats - table with result of game (updated)
 function addResultToStats(result, stats){
     stats.push(result);
     return stats;
 }
 
+// What is does: get/calc summary of results of game from statistics
+//        input: stats - table with result of game
+//       output: structure {nGames, nWins, nLosses, nDraws}
 function getStats(stats){
     let tmp = [];
     let nGames = stats.length;
@@ -133,6 +164,13 @@ function getStats(stats){
     }
 }
 
+// What is does: update elements in HTML
+//        input: page - structure of all elements from HTML
+//               playerChoice - player choice
+//               compChoice - computer choice
+//               gameResult - last result of game
+//               statSummary - summary of games from statistics
+//       output: none
 function updatePage(page, playerChoice, compChoice, gameResult, statSummary){
     page.pictures.forEach((item)=>{
         item.classList.remove("active");
@@ -146,6 +184,11 @@ function updatePage(page, playerChoice, compChoice, gameResult, statSummary){
     page.spanNDraws.textContent = statSummary.nDraws;
 }
 
+// What is does: main program includes main variables and service of events
+//               "click" picture by player,
+//               "click" <button> Let's play (run game)
+//        input: none
+//       output: none
 function main(){
     let page = getPage();
     let isPictureChoose = false;
